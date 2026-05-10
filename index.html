@@ -1078,136 +1078,40 @@ body::after{
 .mob-cat-pill.active{background:rgba(200,169,110,0.12);border-color:var(--accent);color:var(--accent)}
 
 /* ── DASHBOARD ── */
-.dash-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-bottom:20px;
-}
+.dash-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;}
 .dash-card{
-  background:rgba(200,169,110,0.06);
-  border:1px solid rgba(200,169,110,0.15);
-  border-radius:14px;
-  padding:18px 20px;
-  position:relative;
-  overflow:hidden;
+  background:rgba(200,169,110,0.06);border:1px solid rgba(200,169,110,0.15);
+  border-radius:14px;padding:18px 20px;position:relative;overflow:hidden;
   transition:border-color 0.2s,transform 0.2s;
 }
 .dash-card:hover{border-color:rgba(200,169,110,0.3);transform:translateY(-2px);}
-.dash-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent);
-  opacity:0.5;
-}
-.dash-card-icon{font-size:22px;margin-bottom:10px;display:block;}
-.dash-card-val{
-  font-family:'Playfair Display',serif;
-  font-size:30px;font-weight:700;
-  color:var(--paper);display:block;
-  margin-bottom:4px;
-  line-height:1;
-}
-.dash-card-label{
-  font-family:'JetBrains Mono',monospace;
-  font-size:9px;letter-spacing:0.2em;
-  color:var(--accent);text-transform:uppercase;
-}
-.dash-card-sub{
-  font-size:11px;color:rgba(245,243,239,0.35);
-  margin-top:6px;font-family:'Syne',sans-serif;
-}
-.dash-section-title{
-  font-family:'JetBrains Mono',monospace;
-  font-size:9px;letter-spacing:0.22em;
-  color:rgba(200,169,110,0.6);text-transform:uppercase;
-  margin:20px 0 10px;
-  border-bottom:1px solid rgba(245,243,239,0.06);
-  padding-bottom:8px;
-}
-.dash-top-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
-.dash-top-item{
-  display:flex;align-items:center;gap:12px;
-  background:rgba(245,243,239,0.03);
-  border:1px solid rgba(245,243,239,0.06);
-  border-radius:10px;padding:10px 14px;
-}
-.dash-top-rank{
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;color:var(--accent);
-  width:18px;flex-shrink:0;text-align:center;
-}
-.dash-top-img{
-  width:44px;height:28px;border-radius:5px;
-  object-fit:cover;flex-shrink:0;
-  background:rgba(245,243,239,0.06);
-}
-.dash-top-info{flex:1;min-width:0;}
-.dash-top-name{
-  font-size:12.5px;font-weight:600;color:var(--paper);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  margin-bottom:2px;
-}
-.dash-top-cat{
-  font-family:'JetBrains Mono',monospace;
-  font-size:9px;letter-spacing:0.1em;color:var(--muted);
-  text-transform:uppercase;
-}
-.dash-top-dl{
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;color:var(--accent);
-  display:flex;align-items:center;gap:4px;flex-shrink:0;
-}
-.dash-cat-bars{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
-.dash-bar-row{display:flex;flex-direction:column;gap:4px;}
-.dash-bar-label{
-  display:flex;justify-content:space-between;
-  font-size:11px;color:rgba(245,243,239,0.6);
-  font-family:'Syne',sans-serif;
-}
-.dash-bar-label span:last-child{
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;color:var(--accent);
-}
-.dash-bar-track{
-  height:5px;background:rgba(245,243,239,0.06);
-  border-radius:3px;overflow:hidden;
-}
-.dash-bar-fill{
-  height:100%;border-radius:3px;
-  background:linear-gradient(90deg,var(--accent-dark),var(--accent));
-  transition:width 0.8s cubic-bezier(0.4,0,0.2,1);
-}
-.dash-recent-list{display:flex;flex-direction:column;gap:7px;}
-.dash-recent-item{
-  display:flex;align-items:center;gap:10px;
-  padding:8px 12px;border-radius:9px;
-  background:rgba(245,243,239,0.02);
-  border:1px solid rgba(245,243,239,0.05);
-}
-.dash-recent-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--accent);flex-shrink:0;
-}
-.dash-recent-name{
-  flex:1;font-size:12px;color:rgba(245,243,239,0.7);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.dash-recent-time{
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;color:rgba(245,243,239,0.3);flex-shrink:0;
-}
-.dash-refresh-btn{
-  display:flex;align-items:center;justify-content:center;gap:7px;
-  width:100%;background:rgba(200,169,110,0.08);
-  border:1px solid rgba(200,169,110,0.2);
-  color:var(--accent);font-family:'Syne',sans-serif;
-  font-size:12px;font-weight:600;letter-spacing:0.04em;
-  padding:10px;border-radius:10px;cursor:pointer;
-  transition:all 0.2s;margin-top:4px;
-}
-.dash-refresh-btn:hover{background:rgba(200,169,110,0.15);border-color:rgba(200,169,110,0.4);}
-
-@media(max-width:900px){
+.dash-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0.5;}
+.dash-icon{font-size:20px;margin-bottom:8px;display:block;}
+.dash-val{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--paper);display:block;margin-bottom:3px;line-height:1;}
+.dash-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;}
+.dash-sub{font-size:11px;color:rgba(245,243,239,0.35);margin-top:5px;font-family:'Syne',sans-serif;}
+.dash-sec{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:rgba(200,169,110,0.6);text-transform:uppercase;margin:20px 0 10px;border-bottom:1px solid rgba(245,243,239,0.06);padding-bottom:8px;}
+.dash-top-list{display:flex;flex-direction:column;gap:8px;margin-bottom:4px;}
+.dash-top-item{display:flex;align-items:center;gap:12px;background:rgba(245,243,239,0.03);border:1px solid rgba(245,243,239,0.06);border-radius:10px;padding:10px 14px;}
+.dash-rank{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);width:18px;flex-shrink:0;text-align:center;}
+.dash-thumb{width:44px;height:28px;border-radius:5px;object-fit:cover;flex-shrink:0;background:rgba(245,243,239,0.06);}
+.dash-info{flex:1;min-width:0;}
+.dash-name{font-size:12.5px;font-weight:600;color:var(--paper);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px;}
+.dash-cat{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;}
+.dash-dl{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);display:flex;align-items:center;gap:4px;flex-shrink:0;}
+.dash-bar-row{display:flex;flex-direction:column;gap:4px;margin-bottom:8px;}
+.dash-bar-label{display:flex;justify-content:space-between;font-size:11px;color:rgba(245,243,239,0.6);font-family:'Syne',sans-serif;}
+.dash-bar-label span:last-child{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);}
+.dash-bar-track{height:5px;background:rgba(245,243,239,0.06);border-radius:3px;overflow:hidden;}
+.dash-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent-dark),var(--accent));transition:width 0.8s cubic-bezier(0.4,0,0.2,1);}
+.dash-recent-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:9px;background:rgba(245,243,239,0.02);border:1px solid rgba(245,243,239,0.05);margin-bottom:7px;}
+.dash-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.dash-recent-name{flex:1;font-size:12px;color:rgba(245,243,239,0.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dash-recent-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,243,239,0.3);flex-shrink:0;}
+.dash-refresh{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.2);color:var(--accent);font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:10px;border-radius:10px;cursor:pointer;transition:all 0.2s;margin-top:16px;}
+.dash-refresh:hover{background:rgba(200,169,110,0.15);border-color:rgba(200,169,110,0.4);}
+@media(max-width:600px){.dash-grid{grid-template-columns:1fr;}}
+</style>
   .nav-bar{padding:16px 20px}
   .nav-bar.scrolled{padding:12px 20px}
   .nav-pill{display:none}
@@ -1220,14 +1124,12 @@ body::after{
   .gallery-section{padding:24px 16px}
   .gallery-grid{columns:2 160px}
   .hero-scroll-hint{display:none}
-  .dash-grid{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:600px){
   .hero-title{font-size:52px}
   .hero-stats{gap:20px}
   .stat-num{font-size:24px}
   .gallery-grid{columns:1}
-  .dash-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -1586,6 +1488,20 @@ body::after{
   </div>
 </div>
 
+<!-- ── DASHBOARD PANEL (Admin only) ── -->
+<div class="suggestions-panel" id="dashboardPanel" style="width:min(700px,96vw)">
+  <div class="sp-header">
+    <div>
+      <div class="sp-title">📊 Dashboard</div>
+      <div class="sp-sub">ADMIN VIEW · ANALYTICS & INSIGHTS</div>
+    </div>
+    <button class="sp-close" onclick="closeDashboard()">✕</button>
+  </div>
+  <div class="sp-body" id="dashboardBody">
+    <div style="color:rgba(245,243,239,0.4);font-size:13px;padding:24px 0;text-align:center">Loading…</div>
+  </div>
+</div>
+
 <!-- ── SUGGESTIONS PANEL (Admin) ── -->
 <div class="suggestions-panel" id="suggestionsPanel">
   <div class="sp-header">
@@ -1597,20 +1513,6 @@ body::after{
   </div>
   <div class="sp-body">
     <div id="suggestionsList"></div>
-  </div>
-</div>
-
-<!-- ── DASHBOARD PANEL (Admin) ── -->
-<div class="suggestions-panel" id="dashboardPanel" style="width:min(680px,96vw)">
-  <div class="sp-header">
-    <div>
-      <div class="sp-title">📊 Dashboard</div>
-      <div class="sp-sub">ADMIN VIEW · ANALYTICS & INSIGHTS</div>
-    </div>
-    <button class="sp-close" onclick="closeDashboard()">✕</button>
-  </div>
-  <div class="sp-body" id="dashboardBody">
-    <div style="color:rgba(245,243,239,0.4);font-size:13px;padding:24px 0;text-align:center">Loading analytics…</div>
   </div>
 </div>
 
@@ -2088,11 +1990,14 @@ document.addEventListener('click',e=>{
 function adminAction(action){
   document.getElementById('adminDropdown').classList.remove('open');
   if(action==='ai'){ openAIModal(); return; }
-  if(!isAdmin){ openGate(()=>{
-    if(action==='upload') openModal();
-    else if(action==='suggestions') openSuggestionsPanel();
-    else if(action==='dashboard') openDashboard();
-  }); return; }
+  if(!isAdmin){
+    openGate(()=>{
+      if(action==='upload') openModal();
+      else if(action==='suggestions') openSuggestionsPanel();
+      else if(action==='dashboard') openDashboard();
+    });
+    return;
+  }
   if(action==='upload') openModal();
   else if(action==='suggestions') openSuggestionsPanel();
   else if(action==='dashboard') openDashboard();
@@ -2366,6 +2271,7 @@ document.addEventListener('keydown',e=>{
 
 // ── DASHBOARD ──
 function openDashboard(){
+  if(!isAdmin){ showToast('⚠️ Admin access required'); return; }
   document.getElementById('dashboardPanel').classList.add('open');
   renderDashboard();
 }
@@ -2374,151 +2280,115 @@ function closeDashboard(){
 }
 
 async function renderDashboard(){
-  const body = document.getElementById('dashboardBody');
-  body.innerHTML = `<div style="color:rgba(245,243,239,0.4);font-size:13px;padding:24px 0;text-align:center">Loading analytics…</div>`;
+  const body=document.getElementById('dashboardBody');
+  body.innerHTML='<div style="color:rgba(245,243,239,0.4);font-size:13px;padding:24px 0;text-align:center">Loading analytics…</div>';
 
-  // Track page view
-  trackPageView();
+  const total=wallpapers.length;
+  const totalDl=wallpapers.reduce((s,w)=>s+(w.downloads||0),0);
+  const newToday=wallpapers.filter(w=>w.ts>Date.now()-86400000).length;
+  const newWeek=wallpapers.filter(w=>w.ts>Date.now()-7*86400000).length;
+  const top5=[...wallpapers].sort((a,b)=>(b.downloads||0)-(a.downloads||0)).slice(0,5);
+  const recent=[...wallpapers].sort((a,b)=>b.ts-a.ts).slice(0,5);
+  const cats=['cool','nature','modern','abstract','dark','space','city','cars','bikes','bnw'];
+  const catData=cats.map(c=>({cat:c,count:wallpapers.filter(w=>w.cat===c).length})).filter(c=>c.count>0).sort((a,b)=>b.count-a.count);
+  const maxCat=catData[0]?.count||1;
+  const avgDl=total>0?(totalDl/total).toFixed(1):'0';
 
-  // Gather stats from wallpapers array
-  const total = wallpapers.length;
-  const totalDownloads = wallpapers.reduce((s,w)=>s+(w.downloads||0),0);
-  const cutoff3 = Date.now()-3*86400000;
-  const newToday = wallpapers.filter(w=>w.ts>Date.now()-86400000).length;
-  const newThisWeek = wallpapers.filter(w=>w.ts>Date.now()-7*86400000).length;
-  const mostDownloaded = [...wallpapers].sort((a,b)=>(b.downloads||0)-(a.downloads||0)).slice(0,5);
-  const recent = [...wallpapers].sort((a,b)=>b.ts-a.ts).slice(0,5);
-
-  // Category breakdown
-  const cats = ['cool','nature','modern','abstract','dark','space','city','cars','bikes','bnw'];
-  const catCounts = cats.map(c=>({ cat:c, count:wallpapers.filter(w=>w.cat===c).length }))
-    .filter(c=>c.count>0).sort((a,b)=>b.count-a.count);
-  const maxCat = catCounts[0]?.count || 1;
-
-  // Page views from localStorage
-  const views = parseInt(localStorage.getItem('raj_page_views')||'0');
-  const todayViews = parseInt(localStorage.getItem('raj_views_today')||'0');
+  // Page views (localStorage-based)
+  const views=parseInt(localStorage.getItem('raj_page_views')||'0');
+  const todayViews=parseInt(localStorage.getItem('raj_views_today')||'0');
 
   // Suggestions count
-  let suggCount = 0;
-  try{
-    const sr = await sbFetch('/rest/v1/suggestions?select=id');
-    if(sr.ok){ const sd=await sr.json(); suggCount=sd.length; }
-  }catch(e){}
-  const localSugg = JSON.parse(localStorage.getItem('raj_suggestions')||'[]').length;
-  suggCount = suggCount || localSugg;
+  let suggCount=0;
+  try{ const sr=await sbFetch('/rest/v1/suggestions?select=id'); if(sr.ok){ const sd=await sr.json(); suggCount=sd.length; } }catch(e){}
+  suggCount=suggCount||JSON.parse(localStorage.getItem('raj_suggestions')||'[]').length;
 
-  const avgDl = total > 0 ? (totalDownloads/total).toFixed(1) : '0';
-
-  body.innerHTML = `
-    <!-- KPI Cards -->
+  body.innerHTML=`
     <div class="dash-grid">
       <div class="dash-card">
-        <span class="dash-card-icon">👁️</span>
-        <span class="dash-card-val">${formatNum(views)}</span>
-        <span class="dash-card-label">Total Page Views</span>
-        <div class="dash-card-sub">+${todayViews} today</div>
+        <span class="dash-icon">👁️</span>
+        <span class="dash-val">${fmtNum(views)}</span>
+        <span class="dash-label">Total Page Views</span>
+        <div class="dash-sub">+${todayViews} today</div>
       </div>
       <div class="dash-card">
-        <span class="dash-card-icon">⬇️</span>
-        <span class="dash-card-val">${formatNum(totalDownloads)}</span>
-        <span class="dash-card-label">Total Downloads</span>
-        <div class="dash-card-sub">${avgDl} avg per wallpaper</div>
+        <span class="dash-icon">⬇️</span>
+        <span class="dash-val">${fmtNum(totalDl)}</span>
+        <span class="dash-label">Total Downloads</span>
+        <div class="dash-sub">${avgDl} avg per wallpaper</div>
       </div>
       <div class="dash-card">
-        <span class="dash-card-icon">🖼️</span>
-        <span class="dash-card-val">${total}</span>
-        <span class="dash-card-label">Total Wallpapers</span>
-        <div class="dash-card-sub">+${newThisWeek} this week · +${newToday} today</div>
+        <span class="dash-icon">🖼️</span>
+        <span class="dash-val">${total}</span>
+        <span class="dash-label">Total Wallpapers</span>
+        <div class="dash-sub">+${newWeek} this week · +${newToday} today</div>
       </div>
       <div class="dash-card">
-        <span class="dash-card-icon">💡</span>
-        <span class="dash-card-val">${suggCount}</span>
-        <span class="dash-card-label">Suggestions</span>
-        <div class="dash-card-sub">From visitors</div>
+        <span class="dash-icon">💡</span>
+        <span class="dash-val">${suggCount}</span>
+        <span class="dash-label">Suggestions</span>
+        <div class="dash-sub">From visitors</div>
       </div>
     </div>
 
-    <!-- Top Downloaded -->
-    <div class="dash-section-title">🏆 Top Downloaded Wallpapers</div>
+    <div class="dash-sec">🏆 Top Downloaded</div>
     <div class="dash-top-list">
-      ${mostDownloaded.length ? mostDownloaded.map((w,i)=>`
+      ${top5.length?top5.map((w,i)=>`
         <div class="dash-top-item">
-          <div class="dash-top-rank">#${i+1}</div>
-          <img class="dash-top-img" src="${w.src}" alt="" onerror="this.style.opacity='0.2'"/>
-          <div class="dash-top-info">
-            <div class="dash-top-name">${escapeHtml(w.name)}</div>
-            <div class="dash-top-cat">${w.cat}</div>
+          <div class="dash-rank">#${i+1}</div>
+          <img class="dash-thumb" src="${w.src}" alt="" onerror="this.style.opacity='0.15'"/>
+          <div class="dash-info">
+            <div class="dash-name">${escapeHtml(w.name)}</div>
+            <div class="dash-cat">${w.cat}</div>
           </div>
-          <div class="dash-top-dl">
-            <svg width="10" height="10" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="10" y1="3" x2="10" y2="13"/><polyline points="5 8 10 13 15 8"/><line x1="3" y1="17" x2="17" y2="17"/></svg>
+          <div class="dash-dl">
+            <svg width="10" height="10" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="10" y1="3" x2="10" y2="13"/><polyline points="5 8 10 13 15 8"/></svg>
             ${w.downloads||0}
           </div>
-        </div>
-      `).join('') : `<div style="color:rgba(245,243,239,0.3);font-size:13px;text-align:center;padding:16px">No downloads yet</div>`}
+        </div>`).join('')
+      :'<div style="color:rgba(245,243,239,0.3);font-size:13px;text-align:center;padding:12px">No downloads yet</div>'}
     </div>
 
-    <!-- Category Breakdown -->
-    ${catCounts.length ? `
-    <div class="dash-section-title">📂 Wallpapers by Category</div>
-    <div class="dash-cat-bars">
-      ${catCounts.map(c=>`
-        <div class="dash-bar-row">
-          <div class="dash-bar-label">
-            <span>${c.cat.charAt(0).toUpperCase()+c.cat.slice(1)}</span>
-            <span>${c.count}</span>
-          </div>
-          <div class="dash-bar-track">
-            <div class="dash-bar-fill" style="width:${Math.round(c.count/maxCat*100)}%"></div>
-          </div>
-        </div>
-      `).join('')}
-    </div>` : ''}
+    ${catData.length?`
+    <div class="dash-sec">📂 By Category</div>
+    ${catData.map(c=>`
+      <div class="dash-bar-row">
+        <div class="dash-bar-label"><span>${c.cat.charAt(0).toUpperCase()+c.cat.slice(1)}</span><span>${c.count}</span></div>
+        <div class="dash-bar-track"><div class="dash-bar-fill" style="width:${Math.round(c.count/maxCat*100)}%"></div></div>
+      </div>`).join('')}`:''}
 
-    <!-- Recently Added -->
-    <div class="dash-section-title">🕐 Recently Added</div>
-    <div class="dash-recent-list">
-      ${recent.length ? recent.map(w=>`
-        <div class="dash-recent-item">
-          <div class="dash-recent-dot"></div>
-          <div class="dash-recent-name">${escapeHtml(w.name)}</div>
-          <div class="dash-recent-time">${timeAgo(w.ts)}</div>
-        </div>
-      `).join('') : `<div style="color:rgba(245,243,239,0.3);font-size:13px;padding:12px 0">No wallpapers yet</div>`}
-    </div>
+    <div class="dash-sec">🕐 Recently Added</div>
+    ${recent.length?recent.map(w=>`
+      <div class="dash-recent-item">
+        <div class="dash-dot"></div>
+        <div class="dash-recent-name">${escapeHtml(w.name)}</div>
+        <div class="dash-recent-time">${timeAgo(w.ts)}</div>
+      </div>`).join('')
+    :'<div style="color:rgba(245,243,239,0.3);font-size:13px;padding:8px 0">No wallpapers yet</div>'}
 
-    <button class="dash-refresh-btn" onclick="renderDashboard()">
+    <button class="dash-refresh" onclick="renderDashboard()">
       <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4c1.5-1.5 3.5-2 5.5-2a8 8 0 0 1 8 8"/><path d="M16 16c-1.5 1.5-3.5 2-5.5 2a8 8 0 0 1-8-8"/><polyline points="1 10 4 6 7 10"/><polyline points="19 10 16 14 13 10"/></svg>
-      Refresh Analytics
-    </button>
-  `;
+      Refresh
+    </button>`;
 }
 
-function trackPageView(){
-  // Total views
-  const total = parseInt(localStorage.getItem('raj_page_views')||'0') + 1;
-  localStorage.setItem('raj_page_views', total);
+function fmtNum(n){ if(n>=1000000) return (n/1000000).toFixed(1)+'M'; if(n>=1000) return (n/1000).toFixed(1)+'K'; return n; }
 
-  // Today's views
-  const today = new Date().toDateString();
-  const lastDay = localStorage.getItem('raj_views_date');
-  if(lastDay !== today){
-    localStorage.setItem('raj_views_date', today);
-    localStorage.setItem('raj_views_today', '1');
+// Track page views on load
+(function(){
+  const total=(parseInt(localStorage.getItem('raj_page_views')||'0'))+1;
+  localStorage.setItem('raj_page_views',total);
+  const today=new Date().toDateString();
+  if(localStorage.getItem('raj_views_date')!==today){
+    localStorage.setItem('raj_views_date',today);
+    localStorage.setItem('raj_views_today','1');
   } else {
-    const t = parseInt(localStorage.getItem('raj_views_today')||'0') + 1;
-    localStorage.setItem('raj_views_today', t);
+    localStorage.setItem('raj_views_today',(parseInt(localStorage.getItem('raj_views_today')||'0')+1).toString());
   }
-}
-
-function formatNum(n){
-  if(n>=1000000) return (n/1000000).toFixed(1)+'M';
-  if(n>=1000) return (n/1000).toFixed(1)+'K';
-  return n;
-}
+})();
 
 // ── BOOT ──
-trackPageView(); // Track every page load
+if(isAdmin){
   document.getElementById('adminBadge').classList.add('visible');
   document.getElementById('adminNavBtn').classList.add('unlocked');
   document.getElementById('adminLogoutBtn').style.display='flex';
