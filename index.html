@@ -1077,18 +1077,31 @@ body::after{
 }
 .mob-cat-pill.active{background:rgba(200,169,110,0.12);border-color:var(--accent);color:var(--accent)}
 
-.dash-panel{
-  width:min(700px,96vw);
-  right:-720px;
+@media(max-width:900px){
+  .nav-bar{padding:16px 20px}
+  .nav-bar.scrolled{padding:12px 20px}
+  .nav-pill{display:none}
+  .nav-search-wrap{display:none}
+  .mob-nav-toggle{display:flex}
+  .hero{padding:100px 20px 80px}
+  .hero-stats{gap:30px}
+  .cat-bar{display:none}
+  .mob-filter-bar{display:flex}
+  .gallery-section{padding:24px 16px}
+  .gallery-grid{columns:2 160px}
+  .hero-scroll-hint{display:none}
 }
+@media(max-width:600px){
+  .hero-title{font-size:52px}
+  .hero-stats{gap:20px}
+  .stat-num{font-size:24px}
+  .gallery-grid{columns:1}
+}
+/* ── DASHBOARD PANEL ── */
+.dash-panel{position:fixed;top:0;right:-750px;width:min(680px,96vw);height:100vh;z-index:300;background:rgba(8,8,12,0.98);border-left:1px solid rgba(200,169,110,0.15);backdrop-filter:blur(24px);transition:right 0.35s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;box-shadow:-16px 0 48px rgba(0,0,0,0.5);}
 .dash-panel.open{right:0;}
-/* ── DASHBOARD ── */
 .dash-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;}
-.dash-card{
-  background:rgba(200,169,110,0.06);border:1px solid rgba(200,169,110,0.15);
-  border-radius:14px;padding:18px 20px;position:relative;overflow:hidden;
-  transition:border-color 0.2s,transform 0.2s;
-}
+.dash-card{background:rgba(200,169,110,0.06);border:1px solid rgba(200,169,110,0.15);border-radius:14px;padding:18px 20px;position:relative;overflow:hidden;transition:border-color 0.2s,transform 0.2s;}
 .dash-card:hover{border-color:rgba(200,169,110,0.3);transform:translateY(-2px);}
 .dash-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0.5;}
 .dash-icon{font-size:20px;margin-bottom:8px;display:block;}
@@ -1111,31 +1124,11 @@ body::after{
 .dash-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent-dark),var(--accent));transition:width 0.8s cubic-bezier(0.4,0,0.2,1);}
 .dash-recent-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:9px;background:rgba(245,243,239,0.02);border:1px solid rgba(245,243,239,0.05);margin-bottom:7px;}
 .dash-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;}
-.dash-recent-name{flex:1;font-size:12px;color:rgba(245,243,239,0.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.dash-recent-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,243,239,0.3);flex-shrink:0;}
+.dash-rname{flex:1;font-size:12px;color:rgba(245,243,239,0.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dash-rtime{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,243,239,0.3);flex-shrink:0;}
 .dash-refresh{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.2);color:var(--accent);font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:10px;border-radius:10px;cursor:pointer;transition:all 0.2s;margin-top:16px;}
 .dash-refresh:hover{background:rgba(200,169,110,0.15);border-color:rgba(200,169,110,0.4);}
 @media(max-width:600px){.dash-grid{grid-template-columns:1fr;}}
-</style>
-  .nav-bar{padding:16px 20px}
-  .nav-bar.scrolled{padding:12px 20px}
-  .nav-pill{display:none}
-  .nav-search-wrap{display:none}
-  .mob-nav-toggle{display:flex}
-  .hero{padding:100px 20px 80px}
-  .hero-stats{gap:30px}
-  .cat-bar{display:none}
-  .mob-filter-bar{display:flex}
-  .gallery-section{padding:24px 16px}
-  .gallery-grid{columns:2 160px}
-  .hero-scroll-hint{display:none}
-}
-@media(max-width:600px){
-  .hero-title{font-size:52px}
-  .hero-stats{gap:20px}
-  .stat-num{font-size:24px}
-  .gallery-grid{columns:1}
-}
 </style>
 </head>
 <body>
@@ -1493,20 +1486,6 @@ body::after{
   </div>
 </div>
 
-<!-- ── DASHBOARD PANEL (Admin only) ── -->
-<div class="suggestions-panel dash-panel" id="dashboardPanel">
-  <div class="sp-header">
-    <div>
-      <div class="sp-title">📊 Dashboard</div>
-      <div class="sp-sub">ADMIN VIEW · ANALYTICS & INSIGHTS</div>
-    </div>
-    <button class="sp-close" onclick="closeDashboard()">✕</button>
-  </div>
-  <div class="sp-body" id="dashboardBody">
-    <div style="color:rgba(245,243,239,0.4);font-size:13px;padding:24px 0;text-align:center">Loading…</div>
-  </div>
-</div>
-
 <!-- ── SUGGESTIONS PANEL (Admin) ── -->
 <div class="suggestions-panel" id="suggestionsPanel">
   <div class="sp-header">
@@ -1518,6 +1497,19 @@ body::after{
   </div>
   <div class="sp-body">
     <div id="suggestionsList"></div>
+  </div>
+</div>
+
+<div class="dash-panel" id="dashboardPanel">
+  <div class="sp-header">
+    <div>
+      <div class="sp-title">📊 Dashboard</div>
+      <div class="sp-sub">ADMIN VIEW · ANALYTICS & INSIGHTS</div>
+    </div>
+    <button class="sp-close" onclick="closeDashboard()">✕</button>
+  </div>
+  <div class="sp-body" id="dashboardBody">
+    <div style="color:rgba(245,243,239,0.4);font-size:13px;padding:24px 0;text-align:center">Loading…</div>
   </div>
 </div>
 
@@ -2007,6 +1999,78 @@ function adminAction(action){
   else if(action==='suggestions') openSuggestionsPanel();
   else if(action==='dashboard') openDashboard();
 }
+
+function openDashboard(){
+  if(!isAdmin){ showToast('⚠️ Admin access required'); return; }
+  document.getElementById('dashboardPanel').classList.add('open');
+  renderDashboard();
+}
+function closeDashboard(){
+  document.getElementById('dashboardPanel').classList.remove('open');
+}
+
+async function renderDashboard(){
+  const body=document.getElementById('dashboardBody');
+  body.innerHTML='<div style="color:rgba(245,243,239,0.4);font-size:13px;padding:24px 0;text-align:center">Loading analytics…</div>';
+  const total=wallpapers.length;
+  const totalDl=wallpapers.reduce((s,w)=>s+(w.downloads||0),0);
+  const newToday=wallpapers.filter(w=>w.ts>Date.now()-86400000).length;
+  const newWeek=wallpapers.filter(w=>w.ts>Date.now()-7*86400000).length;
+  const top5=[...wallpapers].sort((a,b)=>(b.downloads||0)-(a.downloads||0)).slice(0,5);
+  const recent=[...wallpapers].sort((a,b)=>b.ts-a.ts).slice(0,5);
+  const cats=['cool','nature','modern','abstract','dark','space','city','cars','bikes','bnw'];
+  const catData=cats.map(c=>({cat:c,count:wallpapers.filter(w=>w.cat===c).length})).filter(c=>c.count>0).sort((a,b)=>b.count-a.count);
+  const maxCat=catData[0]?.count||1;
+  const avgDl=total>0?(totalDl/total).toFixed(1):'0';
+  const views=parseInt(localStorage.getItem('raj_page_views')||'0');
+  const todayViews=parseInt(localStorage.getItem('raj_views_today')||'0');
+  let suggCount=0;
+  try{ const sr=await sbFetch('/rest/v1/suggestions?select=id'); if(sr.ok){const sd=await sr.json();suggCount=sd.length;} }catch(e){}
+
+  body.innerHTML=`
+    <div class="dash-grid">
+      <div class="dash-card"><span class="dash-icon">👁️</span><span class="dash-val">${fmtN(views)}</span><span class="dash-label">Total Page Views</span><div class="dash-sub">+${todayViews} today</div></div>
+      <div class="dash-card"><span class="dash-icon">⬇️</span><span class="dash-val">${fmtN(totalDl)}</span><span class="dash-label">Total Downloads</span><div class="dash-sub">${avgDl} avg per wallpaper</div></div>
+      <div class="dash-card"><span class="dash-icon">🖼️</span><span class="dash-val">${total}</span><span class="dash-label">Total Wallpapers</span><div class="dash-sub">+${newWeek} this week · +${newToday} today</div></div>
+      <div class="dash-card"><span class="dash-icon">💡</span><span class="dash-val">${suggCount}</span><span class="dash-label">Suggestions</span><div class="dash-sub">From visitors</div></div>
+    </div>
+    <div class="dash-sec">🏆 Top Downloaded</div>
+    <div class="dash-top-list">
+      ${top5.length?top5.map((w,i)=>`
+        <div class="dash-top-item">
+          <div class="dash-rank">#${i+1}</div>
+          <img class="dash-thumb" src="${w.src}" alt="" onerror="this.style.opacity='0.1'"/>
+          <div class="dash-info"><div class="dash-name">${escapeHtml(w.name)}</div><div class="dash-cat">${w.cat}</div></div>
+          <div class="dash-dl"><svg width="10" height="10" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="10" y1="3" x2="10" y2="13"/><polyline points="5 8 10 13 15 8"/></svg>${w.downloads||0}</div>
+        </div>`).join(''):'<div style="color:rgba(245,243,239,0.3);font-size:13px;text-align:center;padding:12px">No downloads yet</div>'}
+    </div>
+    ${catData.length?`<div class="dash-sec">📂 By Category</div>${catData.map(c=>`
+      <div class="dash-bar-row">
+        <div class="dash-bar-label"><span>${c.cat.charAt(0).toUpperCase()+c.cat.slice(1)}</span><span>${c.count}</span></div>
+        <div class="dash-bar-track"><div class="dash-bar-fill" style="width:${Math.round(c.count/maxCat*100)}%"></div></div>
+      </div>`).join('')}`:''}
+    <div class="dash-sec">🕐 Recently Added</div>
+    ${recent.map(w=>`
+      <div class="dash-recent-item">
+        <div class="dash-dot"></div>
+        <div class="dash-rname">${escapeHtml(w.name)}</div>
+        <div class="dash-rtime">${timeAgo(w.ts)}</div>
+      </div>`).join('')||'<div style="color:rgba(245,243,239,0.3);font-size:13px;padding:8px 0">No wallpapers yet</div>'}
+    <button class="dash-refresh" onclick="renderDashboard()">
+      <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4c1.5-1.5 3.5-2 5.5-2a8 8 0 0 1 8 8"/><path d="M16 16c-1.5 1.5-3.5 2-5.5 2a8 8 0 0 1-8-8"/><polyline points="1 10 4 6 7 10"/><polyline points="19 10 16 14 13 10"/></svg>
+      Refresh Analytics
+    </button>`;
+}
+
+function fmtN(n){if(n>=1000000)return(n/1000000).toFixed(1)+'M';if(n>=1000)return(n/1000).toFixed(1)+'K';return String(n);}
+
+(function trackView(){
+  const t=(parseInt(localStorage.getItem('raj_page_views')||'0'))+1;
+  localStorage.setItem('raj_page_views',t);
+  const today=new Date().toDateString();
+  if(localStorage.getItem('raj_views_date')!==today){localStorage.setItem('raj_views_date',today);localStorage.setItem('raj_views_today','1');}
+  else{localStorage.setItem('raj_views_today',(parseInt(localStorage.getItem('raj_views_today')||'0')+1).toString());}
+})();
 function adminLogout(){
   isAdmin=false; sessionStorage.removeItem('vaulted_admin');
   document.getElementById('adminBadge').classList.remove('visible');
@@ -2273,124 +2337,6 @@ document.addEventListener('keydown',e=>{
     else if(document.getElementById('suggestModal').classList.contains('open')) closeSuggest();
   }
 });
-
-// ── DASHBOARD ──
-function openDashboard(){
-  if(!isAdmin){ showToast('⚠️ Admin access required'); return; }
-  document.getElementById('dashboardPanel').classList.add('open');
-  renderDashboard();
-}
-function closeDashboard(){
-  document.getElementById('dashboardPanel').classList.remove('open');
-}
-
-async function renderDashboard(){
-  const body=document.getElementById('dashboardBody');
-  body.innerHTML='<div style="color:rgba(245,243,239,0.4);font-size:13px;padding:24px 0;text-align:center">Loading analytics…</div>';
-
-  const total=wallpapers.length;
-  const totalDl=wallpapers.reduce((s,w)=>s+(w.downloads||0),0);
-  const newToday=wallpapers.filter(w=>w.ts>Date.now()-86400000).length;
-  const newWeek=wallpapers.filter(w=>w.ts>Date.now()-7*86400000).length;
-  const top5=[...wallpapers].sort((a,b)=>(b.downloads||0)-(a.downloads||0)).slice(0,5);
-  const recent=[...wallpapers].sort((a,b)=>b.ts-a.ts).slice(0,5);
-  const cats=['cool','nature','modern','abstract','dark','space','city','cars','bikes','bnw'];
-  const catData=cats.map(c=>({cat:c,count:wallpapers.filter(w=>w.cat===c).length})).filter(c=>c.count>0).sort((a,b)=>b.count-a.count);
-  const maxCat=catData[0]?.count||1;
-  const avgDl=total>0?(totalDl/total).toFixed(1):'0';
-
-  // Page views (localStorage-based)
-  const views=parseInt(localStorage.getItem('raj_page_views')||'0');
-  const todayViews=parseInt(localStorage.getItem('raj_views_today')||'0');
-
-  // Suggestions count
-  let suggCount=0;
-  try{ const sr=await sbFetch('/rest/v1/suggestions?select=id'); if(sr.ok){ const sd=await sr.json(); suggCount=sd.length; } }catch(e){}
-  suggCount=suggCount||JSON.parse(localStorage.getItem('raj_suggestions')||'[]').length;
-
-  body.innerHTML=`
-    <div class="dash-grid">
-      <div class="dash-card">
-        <span class="dash-icon">👁️</span>
-        <span class="dash-val">${fmtNum(views)}</span>
-        <span class="dash-label">Total Page Views</span>
-        <div class="dash-sub">+${todayViews} today</div>
-      </div>
-      <div class="dash-card">
-        <span class="dash-icon">⬇️</span>
-        <span class="dash-val">${fmtNum(totalDl)}</span>
-        <span class="dash-label">Total Downloads</span>
-        <div class="dash-sub">${avgDl} avg per wallpaper</div>
-      </div>
-      <div class="dash-card">
-        <span class="dash-icon">🖼️</span>
-        <span class="dash-val">${total}</span>
-        <span class="dash-label">Total Wallpapers</span>
-        <div class="dash-sub">+${newWeek} this week · +${newToday} today</div>
-      </div>
-      <div class="dash-card">
-        <span class="dash-icon">💡</span>
-        <span class="dash-val">${suggCount}</span>
-        <span class="dash-label">Suggestions</span>
-        <div class="dash-sub">From visitors</div>
-      </div>
-    </div>
-
-    <div class="dash-sec">🏆 Top Downloaded</div>
-    <div class="dash-top-list">
-      ${top5.length?top5.map((w,i)=>`
-        <div class="dash-top-item">
-          <div class="dash-rank">#${i+1}</div>
-          <img class="dash-thumb" src="${w.src}" alt="" onerror="this.style.opacity='0.15'"/>
-          <div class="dash-info">
-            <div class="dash-name">${escapeHtml(w.name)}</div>
-            <div class="dash-cat">${w.cat}</div>
-          </div>
-          <div class="dash-dl">
-            <svg width="10" height="10" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="10" y1="3" x2="10" y2="13"/><polyline points="5 8 10 13 15 8"/></svg>
-            ${w.downloads||0}
-          </div>
-        </div>`).join('')
-      :'<div style="color:rgba(245,243,239,0.3);font-size:13px;text-align:center;padding:12px">No downloads yet</div>'}
-    </div>
-
-    ${catData.length?`
-    <div class="dash-sec">📂 By Category</div>
-    ${catData.map(c=>`
-      <div class="dash-bar-row">
-        <div class="dash-bar-label"><span>${c.cat.charAt(0).toUpperCase()+c.cat.slice(1)}</span><span>${c.count}</span></div>
-        <div class="dash-bar-track"><div class="dash-bar-fill" style="width:${Math.round(c.count/maxCat*100)}%"></div></div>
-      </div>`).join('')}`:''}
-
-    <div class="dash-sec">🕐 Recently Added</div>
-    ${recent.length?recent.map(w=>`
-      <div class="dash-recent-item">
-        <div class="dash-dot"></div>
-        <div class="dash-recent-name">${escapeHtml(w.name)}</div>
-        <div class="dash-recent-time">${timeAgo(w.ts)}</div>
-      </div>`).join('')
-    :'<div style="color:rgba(245,243,239,0.3);font-size:13px;padding:8px 0">No wallpapers yet</div>'}
-
-    <button class="dash-refresh" onclick="renderDashboard()">
-      <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4c1.5-1.5 3.5-2 5.5-2a8 8 0 0 1 8 8"/><path d="M16 16c-1.5 1.5-3.5 2-5.5 2a8 8 0 0 1-8-8"/><polyline points="1 10 4 6 7 10"/><polyline points="19 10 16 14 13 10"/></svg>
-      Refresh
-    </button>`;
-}
-
-function fmtNum(n){ if(n>=1000000) return (n/1000000).toFixed(1)+'M'; if(n>=1000) return (n/1000).toFixed(1)+'K'; return n; }
-
-// Track page views on load
-(function(){
-  const total=(parseInt(localStorage.getItem('raj_page_views')||'0'))+1;
-  localStorage.setItem('raj_page_views',total);
-  const today=new Date().toDateString();
-  if(localStorage.getItem('raj_views_date')!==today){
-    localStorage.setItem('raj_views_date',today);
-    localStorage.setItem('raj_views_today','1');
-  } else {
-    localStorage.setItem('raj_views_today',(parseInt(localStorage.getItem('raj_views_today')||'0')+1).toString());
-  }
-})();
 
 // ── BOOT ──
 if(isAdmin){
