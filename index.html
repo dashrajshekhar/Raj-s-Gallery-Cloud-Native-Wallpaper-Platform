@@ -1077,6 +1077,11 @@ body::after{
 }
 .mob-cat-pill.active{background:rgba(200,169,110,0.12);border-color:var(--accent);color:var(--accent)}
 
+.dash-panel{
+  width:min(700px,96vw);
+  right:-720px;
+}
+.dash-panel.open{right:0;}
 /* ── DASHBOARD ── */
 .dash-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;}
 .dash-card{
@@ -1489,7 +1494,7 @@ body::after{
 </div>
 
 <!-- ── DASHBOARD PANEL (Admin only) ── -->
-<div class="suggestions-panel" id="dashboardPanel" style="width:min(700px,96vw);right:-720px">
+<div class="suggestions-panel dash-panel" id="dashboardPanel">
   <div class="sp-header">
     <div>
       <div class="sp-title">📊 Dashboard</div>
